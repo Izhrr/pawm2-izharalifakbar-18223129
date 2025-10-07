@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Base Colors */
+  --color-background: #0D0E0F;
+  --color-foreground: #020817;
+  --color-card: rgba(255, 255, 255, 0.05);
+  --color-card-dark: #1a1a1a;
+  --color-card-secondary: #2a2a2a;
+  
+  /* Primary Colors */
+  --color-primary: #3ffcad;
+  --color-primary-hover: #00e676;
+  --color-primary-foreground: #000000;
+  
+  /* Accent Colors */
+  --color-accent: #00b894;
+  --color-accent-hover: #096D4A;
+  --color-accent-foreground: #ffffff;
+  
+  /* Text Colors */
+  --color-text-primary: #f4f4f4;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #64748B;
+  --color-text-dark: #000000;
+  
+  /* Border & Outline */
+  --color-border: #444444;
+  --color-border-light: rgba(255, 255, 255, 0.3);
+  
+  /* Status Colors */
+  --color-success: #00b894;
+  --color-success-bg: rgba(0, 184, 148, 0.2);
+  --color-warning: #ffa500;
+  --color-warning-bg: rgba(255, 165, 0, 0.2);
+  --color-error: #fc3f3f;
+  --color-error-bg: rgba(252, 63, 63, 0.3);
+  --color-info: #c59ffc;
+  
+  /* Difficulty Colors */
+  --color-easy: #00b894;
+  --color-easy-bg: rgba(0, 184, 148, 0.2);
+  --color-medium: #ffa500;
+  --color-medium-bg: rgba(255, 165, 0, 0.2);
+  --color-hard: #d63031;
+  --color-hard-bg: rgba(214, 48, 49, 0.2);
+  
+  /* Typography */
+  --font-family-sans: 'Jakarta Sans', 'Inter', sans-serif;
+  --font-family-mono: 'Fira Code', monospace;
+  --font-family-body: 'Jakarta Sans', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.1);
+  
+  /* Backdrop Filters */
+  --backdrop-blur: blur(14px);
+  --backdrop-blur-sm: blur(5px);
+  --backdrop-blur-header: blur(10px);
+}
