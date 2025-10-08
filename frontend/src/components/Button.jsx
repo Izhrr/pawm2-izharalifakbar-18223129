@@ -3,7 +3,7 @@ import React from 'react';
 const Button = ({ children, className = '', ...props }) => {
   return (
     <button 
-      className={`inline-block px-6 py-3 bg-transparent text-gray-100 border border-gray-100 rounded-md cursor-pointer font-semibold transition-all duration-300 hover:text-white hover:border-emerald-400 hover:bg-emerald-400 hover:-translate-y-0.5 relative overflow-hidden group ${className}`}
+      className={`inline-block px-6 py-2 bg-transparent text-gray-100 border border-gray-100 rounded-md cursor-pointer font-semibold transition-all duration-300 hover:text-white hover:border-emerald-400 hover:bg-emerald-400 hover:-translate-y-0.5 relative overflow-hidden group ${className}`}
       {...props}
     >
       <span className="relative z-10">{children}</span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import Button from '../Button'
 
 const Navbar = () => {
   const location = useLocation();
@@ -15,26 +16,33 @@ const Navbar = () => {
           <li>
             <Link 
               to="/problems" 
-              className={`text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white ${
-                location.pathname === '/problems' ? 'text-white' : ''
-              }`}
+              className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
             >
               Problems
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 hover:w-full"></span>
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
           <li>
             <Link 
               to="/learn" 
-              className={`text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white ${
-                location.pathname === '/learn' ? 'text-white' : ''
-              }`}
+              className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
             >
               Learn
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 hover:w-full"></span>
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          </li>
+          <li>
+            <Link 
+              to="/quiz" 
+              className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
+            >
+              Quiz
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
         </ul>
+
+        <Button>Login</Button>
       </nav>
     </header>
   );
