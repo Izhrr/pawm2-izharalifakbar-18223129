@@ -10,7 +10,7 @@ const Features = () => {
       <h1 className="text-3xl font-bold">Your Blueprint for Success</h1>
       
       {/* Feature Card 1 */}
-      <div className="bg-white/5 backdrop-blur-sm border border-white/30 rounded-2xl flex p-8 gap-8 text-left">
+      <div className=" bg-white/5 backdrop-blur-sm border border-white/30 rounded-2xl flex p-8 gap-8 text-left">
         <div className="w-1/2 flex flex-col gap-5 justify-center md:w-full">
           <h3 className="text-xl font-semibold">Guided Learning Path</h3>
           <p className="text-gray-300">
