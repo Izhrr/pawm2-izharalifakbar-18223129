@@ -110,7 +110,6 @@ const Carousel = () => {
   const extendedCards = [...cardData, ...cardData];
 
   return (
-    // Padding utama ada di sini, di section terluar. Ini sudah benar.
     <section className="flex flex-col w-full max-w-7xl mx-auto px-4 md:px-16 justify-center">
       <h1 className="text-3xl font-bold text-center mb-8 text-white">Practice with Industry-Standard SQL</h1>
       
@@ -124,7 +123,6 @@ const Carousel = () => {
             {extendedCards.map((card, index) => (
               <li 
                 key={index} 
-                // Lebar kartu diatur di sini, dan padding antar kartu (px-2 atau px-4) aman.
                 className={`flex-none ${isMobile ? 'w-full' : 'w-1/3'} px-2 md:px-4 transition-all duration-400 opacity-50 scale-90`}
               >
                 <div className="p-6 bg-gray-800/50 backdrop-blur border border-gray-600/30 rounded-2xl flex flex-col items-center min-h-[200px]">
@@ -139,7 +137,6 @@ const Carousel = () => {
         <button 
           onClick={movePrev}
           disabled={isAnimating}
-          // Posisikan tombol sedikit ke dalam agar tidak terpotong di layar kecil
           className="absolute left-0 md:-left-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800/80 border border-gray-500 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center hover:bg-gray-700 disabled:opacity-50 transition-colors"
         >
           &#8249;
@@ -147,7 +144,6 @@ const Carousel = () => {
         <button 
           onClick={moveNext}
           disabled={isAnimating}
-          // Posisikan tombol sedikit ke dalam
           className="absolute right-0 md:-right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800/80 border border-gray-500 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center hover:bg-gray-700 disabled:opacity-50 transition-colors"
         >
           &#8250;

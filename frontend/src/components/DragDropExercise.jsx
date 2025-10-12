@@ -4,8 +4,7 @@ const DragDropExercise = ({ query, answer, endQuery, options, exerciseId }) => {
   const [draggedItem, setDraggedItem] = useState(null);
   const [droppedValue, setDroppedValue] = useState('');
   const [feedback, setFeedback] = useState('');
-  const [status, setStatus] = useState(''); // 'correct', 'wrong', or ''
-
+  const [status, setStatus] = useState(''); 
   const handleDragStart = (e, value) => {
     setDraggedItem(value);
     setTimeout(() => {

@@ -7,11 +7,8 @@ const ProblemsPage = () => {
   const [db, setDb] = useState(null);
 
   useEffect(() => {
-    // Initialize SQL.js when component mounts
     const initSqlJs = async () => {
       try {
-        // This would need to be adapted based on your SQL.js setup
-        // For now, we'll simulate the database functionality
         setResults('Database initialized successfully.');
       } catch (error) {
         setResults('Error initializing database. Check console for details.');
@@ -26,9 +23,6 @@ const ProblemsPage = () => {
       setResults('Please enter a query.');
       return;
     }
-
-    // Simulate query execution
-    // In a real implementation, you'd use SQL.js here
     try {
       if (query.toLowerCase().includes('select')) {
         setResults(`
