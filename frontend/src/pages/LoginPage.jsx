@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabaseClient';
 import logo from '../assets/logo.png';
+import herobg from '../assets/hero-section.png'
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -39,13 +40,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="mt-10 min-h-screen bg-gray-900 flex items-center justify-center px-4">
+    <div className="relative min-h-screen max-h-screen overflow-hidden flex items-center justify-center px-4">
 
-      <div className="relative mx-10 sm:mx-20 max-w-7xl">
-        {/* Login Card */}
-        <div className="bg-gray-800 border border-gray-600 rounded-2xl p-8 shadow-2xl">
-          {/* Header */}
-          <div className="text-center mb-8">
+      <div className="relative mx-10 sm:mx-20 max-w-7xl z-1">
+        {/* Login Card with gradient border */}
+        <div className="rounded-2xl p-[0.1px] bg-gradient-to-br from-[#0059FF] via-transparent to-transparent">
+          <div className="bg-[#040818] rounded-2xl p-8 shadow-2xl">
+            {/* Header */}
+            <div className="text-center mb-8">
             <div className="flex justify-center mb-6">
               <img src={logo} alt="SQLForge Logo" className="h-12" />
             </div>
@@ -110,6 +112,7 @@ const LoginPage = () => {
           </button>
 
 
+          </div>
         </div>
 
         {/* Footer */}
@@ -119,6 +122,7 @@ const LoginPage = () => {
           </p>
         </div>
       </div>
+      <img src={herobg} alt="bg" className='absolute left-0 bottom-0 w-full z-0 pointer-events-none select-none' style={{maxHeight: '100vh', objectFit: 'cover'}}/>
     </div>
   );
 };
