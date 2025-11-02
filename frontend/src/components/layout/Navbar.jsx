@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../lib/supabaseClient';
 import logo from '../../assets/logo.png';
 import Button from '../Button';
+import iconMenu from '../../assets/icon-menu.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -148,60 +149,55 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Hamburger Button */}
+          {/* Hamburger Button with custom icon, changes to X when open */}
           <button
             onClick={toggleMenu}
-            className="md:hidden flex flex-col gap-1.5 w-6 h-6 justify-center items-center z-50"
+            className="md:hidden flex items-center justify-center w-10 h-10 bg-transparent z-50"
             aria-label="Toggle menu"
           >
-            <span
-              className={`w-6 h-0.5 bg-gray-100 transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            ></span>
-            <span
-              className={`w-6 h-0.5 bg-gray-100 transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}
-            ></span>
-            <span
-              className={`w-6 h-0.5 bg-gray-100 transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            ></span>
+              <img src={iconMenu} alt="menu" className="w-6 h-6" />
           </button>
         </nav>
       </header>
 
       {/* Backdrop Blur Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300 md:hidden ${
           isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={toggleMenu}
       ></div>
 
-      {/* Mobile Sidebar Menu */}
+      {/* Mobile Sidebar Menu (z-50) */}
       <aside
-        className={`fixed top-0 right-0 h-full w-64 bg-gray-900 z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 h-full w-64 bg-[#030814] z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
+        {/* Close (X) button inside sidebar */}
+        <button
+          onClick={toggleMenu}
+          className="absolute top-4 right-4 text-white p-2 rounded-full hover:bg-gray-800 focus:outline-none"
+          aria-label="Close menu"
+          style={{zIndex: 60}}
+        >
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
         <div className="flex flex-col h-full pt-24 px-6">
           {/* Mobile Menu Links */}
           <ul className="flex flex-col gap-6 list-none">
             <li>
               <Link 
-                to="/problems" 
-                className="text-gray-100 font-semibold text-lg hover:text-emerald-400 transition-colors block"
+                to="/" 
+                className="z-999 text-gray-100 font-semibold text-lg hover:text-[#0059FF] transition-colors block"
               >
-                Problems
+                Home
               </Link>
             </li>
             <li>
               <Link 
                 to="/learn" 
-                className="text-gray-100 font-semibold text-lg hover:text-emerald-400 transition-colors block"
+                className="text-gray-100 font-semibold text-lg hover:text-[#0059FF] transition-colors block"
               >
                 Learn
               </Link>
@@ -209,7 +205,7 @@ const Navbar = () => {
             <li>
               <Link 
                 to="/quiz" 
-                className="text-gray-100 font-semibold text-lg hover:text-emerald-400 transition-colors block"
+                className="text-gray-100 font-semibold text-lg hover:text-[#0059FF] transition-colors block"
               >
                 Quiz
               </Link>
