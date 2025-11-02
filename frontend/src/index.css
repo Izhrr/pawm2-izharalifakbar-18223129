@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -47,9 +47,9 @@
   --color-hard-bg: rgba(214, 48, 49, 0.2);
   
   /* Typography */
-  --font-family-sans: 'Jakarta Sans', 'Inter', sans-serif;
+  --font-family-sans: 'Manrope', 'Inter', sans-serif;
   --font-family-mono: 'Fira Code', monospace;
-  --font-family-body: 'Jakarta Sans', sans-serif;
+  --font-family-body: 'Manrope', sans-serif;
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -77,4 +77,8 @@
   --backdrop-blur: blur(14px);
   --backdrop-blur-sm: blur(5px);
   --backdrop-blur-header: blur(10px);
+}
+
+body {
+  font-family: var(--font-family-sans);
 }

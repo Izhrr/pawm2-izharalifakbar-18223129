@@ -43,23 +43,39 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const getLinkClass = (path) => {
+    return location.pathname === path ? 'opacity-100' : 'opacity-0';
+  };
+
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-gray-900/80 backdrop-blur-md py-6">
+      <header 
+        className="
+          fixed top-0 w-full z-50 
+        backdrop-blur-md py-6
+        "
+      >
         <nav className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
           <Link to="/">
             <img src={logo} alt="SQLForge Logo" className="h-8 md:h-10" />
           </Link>
 
-          {/* Desktop Menu */}
           <ul className="hidden md:flex gap-8 list-none">
             <li>
               <Link 
-                to="/problems" 
+                to="/" 
                 className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
               >
-                Problems
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
+                Home
+                <span 
+                  className={`
+                    absolute left-1/2 -translate-x-1/2 bottom-[-8px] 
+                    w-1.5 h-1.5 bg-white rounded-full
+                    transition-opacity duration-300
+                    ${getLinkClass('/')}
+                    group-hover:opacity-100
+                  `}
+                ></span>
               </Link>
             </li>
             <li>
@@ -68,7 +84,15 @@ const Navbar = () => {
                 className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
               >
                 Learn
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
+                <span 
+                  className={`
+                    absolute left-1/2 -translate-x-1/2 bottom-[-8px] 
+                    w-1.5 h-1.5 bg-white rounded-full
+                    transition-opacity duration-300
+                    ${getLinkClass('/learn')}
+                    group-hover:opacity-100
+                  `}
+                ></span>
               </Link>
             </li>
             <li>
@@ -77,7 +101,15 @@ const Navbar = () => {
                 className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
               >
                 Quiz
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
+                <span 
+                  className={`
+                    absolute left-1/2 -translate-x-1/2 bottom-[-8px] 
+                    w-1.5 h-1.5 bg-white rounded-full
+                    transition-opacity duration-300
+                    ${getLinkClass('/quiz')}
+                    group-hover:opacity-100
+                  `}
+                ></span>
               </Link>
             </li>
           </ul>

@@ -1,16 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
-import learnexample from '../assets/learn-example.svg';
-import problemexample from '../assets/problem-example.svg';
+import Button from '../Button';
+import learnexample from '../../assets/learn-example.svg';
+import problemexample from '../../assets/problem-example.svg';
 
 const Features = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 flex flex-col gap-12 text-center">
-      <h1 className="text-3xl font-bold">Your Blueprint for Success</h1>
+    <section className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 flex flex-col items-center gap-12 text-center">
+      <span
+        className="
+          inline-block
+          bg-transparent
+          border-[1px] border-[#C4C4C4]/50
+          rounded-full
+          px-4 py-2
+          text-xl text-gray-300
+          font-medium
+          w-fit
+        "
+      >
+        Your Blueprint for Success
+      </span>
       
       {/* Feature Card 1: Guided Learning Path */}
-      <div className="bg-white/5 backdrop-blur-sm border border-white/30 rounded-2xl flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 text-center md:text-left">
+      <div className="bg-[#030814] backdrop-blur-sm border border-white/10 rounded-2xl flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 text-center md:text-left">
         {/* Teks Konten */}
         <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-5 justify-center">
           <h3 className="text-xl font-semibold">Guided Learning Path</h3>
@@ -35,7 +48,7 @@ const Features = () => {
       </div>
       
       {/* Feature Card 2: Real-World Problem Solving */}
-      <div className="bg-white/5 backdrop-blur-sm border border-white/30 rounded-2xl flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 text-center md:text-left">
+      <div className="bg-[#030814] backdrop-blur-sm border border-white/10 rounded-2xl flex flex-col md:flex-row p-6 md:p-8 gap-6 md:gap-8 text-center md:text-left">
         {/* Ilustrasi */}
         <div className="w-full md:w-1/2 flex justify-center items-center overflow-hidden order-first md:order-first">
           <img 

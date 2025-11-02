@@ -8,9 +8,9 @@ const MainLayout = () => {
   const isLearnPage = location.pathname === '/learn';
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
+    <div className="min-h-screen bg-[#01040E] text-white ">
       <Navbar />
-      <main className={`flex-grow ${isLearnPage ? 'flex-grow' : ''}`}>
+      <main className='relative z-10 flex w-full flex-col gap-16 overflow-x-hidden'>
         <Outlet />
       </main>
       {!isLearnPage && <Footer />}
