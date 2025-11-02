@@ -4,43 +4,27 @@ import QuizSelection from '../components/quiz/QuizSelection';
 import QuizQuestion from '../components/quiz/QuizQuestion';
 import QuizResult from '../components/quiz/QuizResult';
 import QuizReview from '../components/quiz/QuizReview';
-import { supabase } from '../lib/supabaseClient';
+import { quizService } from '../services/quizService';
 
 const QuizPage = () => {
   const { session } = useAuth();
-  const [currentView, setCurrentView] = useState('selection'); // selection, quiz, result, review
+  const [currentView, setCurrentView] = useState('selection');
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [quizData, setQuizData] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [userScores, setUserScores] = useState({});
-  const [quizData, setQuizData] = useState(null);
 
-  // Load user scores from database
   useEffect(() => {
-    if (session?.user?.id) {
+    if (session?.user) {
       loadUserScores();
     }
   }, [session]);
 
   const loadUserScores = async () => {
     try {
-      const { data, error } = await supabase
-        .from('quiz_scores')
-        .select('*')
-        .eq('user_id', session.user.id);
-      
-      if (error) throw error;
-      
-      const scoresMap = {};
-      data.forEach(score => {
-        scoresMap[score.quiz_id] = {
-          highest_score: score.highest_score,
-          total_questions: score.total_questions,
-          completed_at: score.completed_at
-        };
-      });
-      
-      setUserScores(scoresMap);
+      const scores = await quizService.getUserScores(session.user.id);
+      setUserScores(scores);
     } catch (error) {
       console.error('Error loading user scores:', error);
     }
@@ -62,7 +46,6 @@ const QuizPage = () => {
     if (currentQuestion < quizData.questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // Quiz completed, calculate score and save
       calculateAndSaveScore(newAnswers);
     }
   };
@@ -80,75 +63,20 @@ const QuizPage = () => {
 
     // Save score to database
     try {
-      console.log('Saving score:', score, 'for quiz:', selectedQuiz.id, 'user:', session.user.id);
-      
-      // First, check if record exists
-      const { data: existingScore, error: fetchError } = await supabase
-        .from('quiz_scores')
-        .select('highest_score, id')
-        .eq('user_id', session.user.id)
-        .eq('quiz_id', selectedQuiz.id)
-        .maybeSingle(); 
+      await quizService.saveQuizScore(
+        session.user.id,
+        selectedQuiz.id,
+        score,
+        quizData.questions.length
+      );
 
-      if (fetchError && fetchError.code !== 'PGRST116') {
-        throw fetchError;
-      }
-
-      const shouldUpdate = !existingScore || score > existingScore.highest_score;
-      const finalScore = shouldUpdate ? score : existingScore?.highest_score || score;
-
-      console.log('Existing score:', existingScore?.highest_score, 'New score:', score, 'Should update:', shouldUpdate);
-
-      if (existingScore) {
-        // Record exists, update if new score is higher
-        if (shouldUpdate) {
-          const { error: updateError } = await supabase
-            .from('quiz_scores')
-            .update({
-              highest_score: score,
-              total_questions: quizData.questions.length,
-              completed_at: new Date().toISOString(),
-              updated_at: new Date().toISOString()
-            })
-            .eq('id', existingScore.id);
-
-          if (updateError) throw updateError;
-          console.log('Score updated successfully');
-        } else {
-          console.log('New score is not higher, keeping existing score');
-        }
-      } else {
-        // Record doesn't exist, insert new one
-        const { error: insertError } = await supabase
-          .from('quiz_scores')
-          .insert({
-            user_id: session.user.id,
-            quiz_id: selectedQuiz.id,
-            highest_score: score,
-            total_questions: quizData.questions.length,
-            completed_at: new Date().toISOString()
-          });
-
-        if (insertError) throw insertError;
-        console.log('New score inserted successfully');
-      }
-
-      // Update local scores state
-      setUserScores(prev => ({
-        ...prev,
-        [selectedQuiz.id]: {
-          highest_score: finalScore,
-          total_questions: quizData.questions.length,
-          completed_at: new Date().toISOString()
-        }
-      }));
-
-      setCurrentView('result');
+      // Reload scores
+      await loadUserScores();
     } catch (error) {
       console.error('Error saving score:', error);
-      // Still show result even if save fails
-      setCurrentView('result');
     }
+
+    setCurrentView('result');
   };
 
   const handleReviewQuiz = () => {
