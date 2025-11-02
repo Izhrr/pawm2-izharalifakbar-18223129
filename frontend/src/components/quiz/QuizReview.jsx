@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
+import Button from '../Button';
 
 const QuizReview = ({ quiz, answers, onBackToSelection }) => {
   const isCorrectAnswer = (questionIndex, userAnswer) => {
@@ -16,13 +17,13 @@ const QuizReview = ({ quiz, answers, onBackToSelection }) => {
     <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="mb-8">
-        <button
+        <Button
           onClick={onBackToSelection}
-          className="flex items-center gap-2 text-gray-400 hover:text-gray-100 mb-4 transition-colors"
+          className="flex items-center gap-2 text-gray-400 hover:text-gray-100 mb-4 transition-colors bg-transparent border border-gray-600 hover:border-gray-500"
         >
           <ArrowLeft className="w-5 h-5" />
           Back to Quizzes
-        </button>
+        </Button>
         <h1 className="text-3xl font-bold mb-2">Quiz Review</h1>
         <p className="text-gray-300">{quiz.title} - Answer Review</p>
       </div>
@@ -147,12 +148,12 @@ const QuizReview = ({ quiz, answers, onBackToSelection }) => {
 
       {/* Back Button */}
       <div className="mt-8 text-center">
-        <button
+        <Button
           onClick={onBackToSelection}
-          className="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg transition-colors duration-200"
+          className="px-8 py-3"
         >
           Back to Quiz Selection
-        </button>
+        </Button>
       </div>
     </div>
   );

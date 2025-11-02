@@ -58,10 +58,10 @@ const DragDropExercise = ({ query, answer, endQuery, options, exerciseId }) => {
           onDrop={handleDrop}
           className={`inline-block w-20 h-9 border-2 border-dashed rounded-md text-center leading-7 font-semibold transition-all ${
             status === 'correct'
-              ? 'bg-emerald-500/30 border-emerald-500 text-emerald-400'
+              ? 'bg-[#0059FF] border-[#0059FF] text-[#0059FF]'
               : status === 'wrong'
               ? 'bg-red-500/30 border-red-500 text-red-400'
-              : 'bg-white/10 border-gray-400 hover:border-emerald-400 hover:bg-emerald-400/20'
+              : 'bg-white/10 border-gray-400 hover:border-[#0059FF] hover:bg-[#0059FF]'
           }`}
         >
           {droppedValue}
@@ -83,7 +83,7 @@ const DragDropExercise = ({ query, answer, endQuery, options, exerciseId }) => {
         ))}
       </div>
 
-      <button onClick={checkAnswer} className="bg-transparent border border-gray-100 text-gray-100 px-6 py-2 rounded-md font-semibold hover:bg-emerald-400 hover:border-emerald-400 hover:text-white transition-all">
+  <button onClick={checkAnswer} className="bg-transparent border border-gray-100 text-gray-100 px-6 py-2 rounded-md font-semibold hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all">
         Check Answer
       </button>
 

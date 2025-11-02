@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Button from '../Button';
 
 const QuizQuestion = ({ quiz, currentQuestion, onAnswerSubmit, totalQuestions }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -96,7 +97,7 @@ const QuizQuestion = ({ quiz, currentQuestion, onAnswerSubmit, totalQuestions })
         </div>
         <div className="w-full bg-gray-700 rounded-full h-2">
           <div 
-            className="bg-emerald-400 h-2 rounded-full transition-all duration-300"
+            className="bg-[#0059FF] h-2 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -106,7 +107,7 @@ const QuizQuestion = ({ quiz, currentQuestion, onAnswerSubmit, totalQuestions })
       <div className="bg-gray-800 border border-gray-600 rounded-lg p-8">
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <span className="bg-[#0059FF] text-white px-3 py-1 rounded-full text-sm font-medium">
               {question.type === 'multiple-choice' ? 'Multiple Choice' : 'Drag & Drop'}
             </span>
             <span className="text-gray-400 text-sm">{quiz.title}</span>
@@ -123,8 +124,8 @@ const QuizQuestion = ({ quiz, currentQuestion, onAnswerSubmit, totalQuestions })
                 onClick={() => handleMultipleChoice(option)}
                 className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${
                   selectedAnswer === option
-                    ? 'border-emerald-400 bg-emerald-400/10 text-emerald-400'
-                    : 'border-gray-600 bg-gray-700 text-gray-100 hover:border-gray-500 hover:bg-gray-600'
+                    ? 'border-[#0059FF] bg-[#0059FF] bg-opacity-10 text-white'
+                    : 'border-gray-600 bg-gray-700 text-gray-100 hover:border-[#0059FF] hover:bg-[#0059FF]/10 hover:text-[#0059FF]'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -222,20 +223,17 @@ const QuizQuestion = ({ quiz, currentQuestion, onAnswerSubmit, totalQuestions })
 
         {/* Submit Button */}
         <div className="flex justify-end">
-          <button
+          <Button
             onClick={handleSubmit}
             disabled={!canSubmit()}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-              canSubmit()
-                ? 'bg-emerald-600 hover:bg-emerald-500 text-white'
-                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
-            }`}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold ${!canSubmit() ? 'opacity-60 cursor-not-allowed' : ''}`}
+            style={!canSubmit() ? { background: '#6b7280' } : {}}
           >
             {currentQuestion < totalQuestions - 1 ? 'Next Question' : 'Finish Quiz'}
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

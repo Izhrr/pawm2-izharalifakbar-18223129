@@ -78,12 +78,15 @@ const Navbar = () => {
                 ></span>
               </Link>
             </li>
-            <li>
+            <li className="relative group/nav">
               <Link 
                 to="/learn" 
                 className="group text-gray-100 font-semibold px-2 py-1 relative transition-colors hover:text-white"
               >
-                Learn
+                <span className="inline-flex items-center">
+                  Learn
+                  <svg className="ml-1 w-4 h-4 inline-block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </span>
                 <span 
                   className={`
                     absolute left-1/2 -translate-x-1/2 bottom-[-8px] 
@@ -94,6 +97,19 @@ const Navbar = () => {
                   `}
                 ></span>
               </Link>
+              {/* Dropdown */}
+              <ul
+                className="absolute left-0 top-full mt-2 w-44 bg-gray-900 border border-gray-700 rounded-lg shadow-lg opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible group-focus-within/nav:opacity-100 group-focus-within/nav:visible transition-all duration-200 z-50"
+                onMouseEnter={e => e.currentTarget.classList.add('opacity-100','visible')}
+                onMouseLeave={e => e.currentTarget.classList.remove('opacity-100','visible')}
+              >
+                <li>
+                  <Link to="/learn?topic=select-topic" className="block px-4 py-2 text-gray-100 hover:bg-[#0059FF] hover:text-white rounded-t-lg transition-colors">SQL SELECT</Link>
+                </li>
+                <li>
+                  <Link to="/learn?topic=where-topic" className="block px-4 py-2 text-gray-100 hover:bg-[#0059FF] hover:text-white rounded-b-lg transition-colors">SQL WHERE</Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link 

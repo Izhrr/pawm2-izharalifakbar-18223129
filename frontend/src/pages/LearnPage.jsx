@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
-import Sidebar from '../components/learn/Sidebar';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DragDropExercise from '../components/learn/DragDropExercise';
 import MultipleChoiceExercise from '../components/learn/MultipleChoiceExercise';
 
 const LearnPage = () => {
-  const [activeTopic, setActiveTopic] = useState('select-topic');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const getTopicFromQuery = () => {
+    const params = new URLSearchParams(location.search);
+    return params.get('topic') || 'select-topic';
+  };
+  const [activeTopic, setActiveTopic] = useState(getTopicFromQuery());
+
+  useEffect(() => {
+    setActiveTopic(getTopicFromQuery());
+  }, [location.search]);
 
   const topics = [
     { id: 'select-topic', title: 'SQL SELECT', disabled: false },
@@ -14,10 +24,8 @@ const LearnPage = () => {
   ];
 
   return (
-    <main className="pt-28 pb-16 flex">
-      <Sidebar topics={topics} activeTopic={activeTopic} setActiveTopic={setActiveTopic} />
-      
-      <div className="ml-70 px-10 flex-1">
+    <main className="pt-28 pb-16 px-4 md:px-10">
+      <div className="max-w-4xl mx-auto">
         {activeTopic === 'select-topic' && (
           <article className="topic-content">
             <h1 className="text-3xl font-bold mb-4">SQL SELECT Statement</h1>

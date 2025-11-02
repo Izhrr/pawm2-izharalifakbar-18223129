@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 import { CheckCircle, Clock, Star } from 'lucide-react';
 
 const QuizSelection = ({ onQuizStart, userScores }) => {
@@ -214,7 +215,7 @@ const QuizSelection = ({ onQuizStart, userScores }) => {
           return (
             <div 
               key={quiz.id}
-              className="bg-gray-800 border border-gray-600 rounded-lg p-6 hover:border-emerald-400 transition-all duration-300 relative"
+              className="bg-[#030814] border border-gray-600 rounded-lg p-6 hover:border-[#0059FF] transition-all duration-300 relative"
             >
               {/* Score Status Badge */}
               {scoreStatus && (
@@ -255,12 +256,12 @@ const QuizSelection = ({ onQuizStart, userScores }) => {
                   </div>
                 </div>
                 
-                <button
+                <Button
                   onClick={() => onQuizStart(quiz)}
-                  className="w-full cursor-pointer bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+                  className="w-full py-3 px-4 rounded-lg"
                 >
                   {scoreStatus ? 'Retry Quiz' : 'Start Quiz'}
-                </button>
+                </Button>
               </div>
             </div>
           );

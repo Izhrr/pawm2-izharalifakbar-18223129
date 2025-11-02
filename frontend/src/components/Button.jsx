@@ -5,7 +5,7 @@ const Button = ({ children, className = '', style = {}, ...props }) => {
     <button
       className={`
         text-[16px]
-        inline-block px-4 py-2
+        inline-flex items-center justify-center px-4 py-2
         text-white
         rounded-full
         font-semibold
