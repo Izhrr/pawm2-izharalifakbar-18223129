@@ -83,6 +83,13 @@ const QuizPage = () => {
     setCurrentView('review');
   };
 
+  const handleRetryQuiz = () => {
+    // Reset quiz state and restart the same quiz
+    setCurrentQuestion(0);
+    setAnswers([]);
+    setCurrentView('quiz');
+  };
+
   const handleBackToSelection = () => {
     setCurrentView('selection');
     setSelectedQuiz(null);
@@ -116,6 +123,7 @@ const QuizPage = () => {
             answers={answers}
             onReviewQuiz={handleReviewQuiz}
             onBackToSelection={handleBackToSelection}
+            onRetryQuiz={handleRetryQuiz}
             userScores={userScores}
           />
         )}

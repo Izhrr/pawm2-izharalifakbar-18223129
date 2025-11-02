@@ -4,7 +4,7 @@ import Eye from 'lucide-react/dist/esm/icons/eye';
 import ArrowLeft from 'lucide-react/dist/esm/icons/arrow-left';
 import checkCircle from '../../assets/check_circle.png';
 
-const QuizResult = ({ quiz, answers, onReviewQuiz, onBackToSelection, userScores }) => {
+const QuizResult = ({ quiz, answers, onReviewQuiz, onBackToSelection, userScores, onRetryQuiz }) => {
   const calculateScore = () => {
     let correct = 0;
     answers.forEach((answer, index) => {
@@ -43,7 +43,7 @@ const QuizResult = ({ quiz, answers, onReviewQuiz, onBackToSelection, userScores
         </div>
         {/* Retry Button */}
         <div className="mb-4">
-          <Button className="w-full text-lg py-3 rounded-2xl" onClick={() => window.location.reload()}>
+          <Button className="w-full text-lg py-3 rounded-2xl" onClick={onRetryQuiz}>
             Retry Quiz
           </Button>
         </div>
