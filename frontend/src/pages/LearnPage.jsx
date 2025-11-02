@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/Sidebar';
-import DragDropExercise from '../components/DragDropExercise';
-import MultipleChoiceExercise from '../components/MultipleChoiceExercise';
+import Sidebar from '../components/learn/Sidebar';
+import DragDropExercise from '../components/learn/DragDropExercise';
+import MultipleChoiceExercise from '../components/learn/MultipleChoiceExercise';
 
 const LearnPage = () => {
   const [activeTopic, setActiveTopic] = useState('select-topic');
