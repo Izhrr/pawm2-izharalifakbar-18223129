@@ -141,10 +141,10 @@ const Carousel = () => {
                 key={index} 
                 className={`flex-none ${isMobile ? 'w-full' : 'w-1/3'} px-1 sm:px-2 md:px-4 transition-all duration-400 opacity-50 scale-90`}
               >
-                  <div className="p-3 sm:p-4 md:p-6 bg-[#030814] backdrop-blur border border-gray-600/30 rounded-2xl flex flex-col items-center min-h-[140px] sm:min-h-[180px] md:min-h-[200px]">
+                  <div className="p-3 sm:p-4 md:p-6 bg-[#030814] backdrop-blur border border-gray-600/30 rounded-2xl flex flex-col items-center justify-center min-h-[220px] h-[220px] sm:min-h-[240px] sm:h-[240px] md:min-h-[260px] md:h-[260px] w-full text-center">
                     <h3 className="text-base sm:text-lg font-semibold mb-2 text-white">{card.title}</h3>
-                    <p className="text-gray-300 text-xs sm:text-sm text-center">{card.description}</p>
-                </div>
+                    <p className="text-gray-300 text-xs sm:text-sm">{card.description}</p>
+                  </div>
               </li>
             ))}
           </ul>
@@ -155,7 +155,7 @@ const Carousel = () => {
           onClick={movePrev}
           disabled={isAnimating}
           className="
-            absolute left-0 md:-left-10 top-1/2 transform -translate-y-1/2 z-10
+            absolute -left-7 sm:-left-10 md:-left-16 top-1/2 transform -translate-y-1/2 z-10
             bg-gradient-to-br from-[#020F31] to-[#072F97] 
             text-white rounded-full 
             w-10 h-10 md:w-12 md:h-12 flex items-center justify-center
@@ -174,7 +174,7 @@ const Carousel = () => {
           onClick={moveNext}
           disabled={isAnimating}
           className="
-            absolute right-1 md:-right-10 top-1/2 transform -translate-y-1/2 z-10
+            absolute -right-7 sm:-right-10 md:-right-16 top-1/2 transform -translate-y-1/2 z-10
             bg-gradient-to-br from-[#020F31] to-[#072F97]    /* Gradient Biru */
             text-white rounded-full 
             w-10 h-10 md:w-12 md:h-12 flex items-center justify-center

@@ -65,7 +65,7 @@ const Features = () => {
             Theory is nothing without practice. Apply your knowledge in our challenge arena, tackling a curated set of problems designed to sharpen your skills for real-world data tasks.
           </p>
           <div className="mt-2 md:mt-0">
-            <Link to="/problems" className="inline-block">
+            <Link to="/Quiz" className="inline-block">
               <Button>View Challenges</Button>
             </Link>
           </div>
